@@ -12,21 +12,29 @@ Agora is a web application designed to help wholesale businesses manage their op
 - **Real-Time Order Updates**: Keep customers informed about their order status
 
 ## File Structure
-- `LICENSE.txt`: GNU General Public License v3.0
-- `about.html`: Marketing page describing Agora's features and pricing
-- `index.html`: Main application entry point with fullscreen iframe to the AppSheet application
+```
+├── LICENSE.txt          # GNU General Public License v3.0
+├── about.html           # Marketing page describing Agora's features and pricing
+├── index.html           # Main application entry point with fullscreen iframe
+└── README.md            # This file
+```
 
 ## Getting Started
-1. Open `index.html` in a web browser to access the main application
-2. The application will attempt to launch in fullscreen mode
-3. To learn more about the features, open `about.html`
+1. Clone the repository:
+   ```
+   git clone https://github.com/yourusername/agora.git
+   cd agora
+   ```
+2. Open `index.html` in a web browser to access the main application
+3. The application will attempt to launch in fullscreen mode
+4. To learn more about the features, open `about.html`
 
 ## Pricing
 - ₱8,888 per month
 - Special offer: Pay for 10 months instead of 12 when paying annually
 
 ## License
-This project is licensed under the GNU General Public License v3.0 - see the LICENSE.txt file for details.
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE.txt](LICENSE.txt) file for details.
 
 ## Contact
 - Email: growyourbusiness@grassr.solutions
@@ -34,4 +42,4 @@ This project is licensed under the GNU General Public License v3.0 - see the LIC
 - Website: https://www.grassr.solutions/
 
 ## About GRASSR SOLUTIONS
-GRASSR SOLUTIONS is based in Davao City, Philippines, and specializes in making business systems for desktop, tablet, and mobile.
+GRASSR SOLUTIONS is based in Davao City, Philippines, and specializes in providing digital solutions for wholesale businesses.
