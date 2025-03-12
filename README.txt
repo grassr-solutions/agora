@@ -20,14 +20,9 @@ Agora is a web application designed to help wholesale businesses manage their op
 ```
 
 ## Getting Started
-1. Clone the repository:
-   ```
-   git clone https://github.com/yourusername/agora.git
-   cd agora
-   ```
-2. Open `index.html` in a web browser to access the main application
-3. The application will attempt to launch in fullscreen mode
-4. To learn more about the features, open `about.html`
+1. Open `index.html` in a web browser to access the main application
+2. The application will attempt to launch in fullscreen mode
+3. To learn more about the features, open `about.html`
 
 ## Pricing
 - ₱8,888 per month
