@@ -29,7 +29,7 @@ Agora is a web application designed to help wholesale businesses manage their op
 - Special offer: Pay for 10 months instead of 12 when paying annually
 
 ## License
-This project is licensed under the GNU General Public License v3.0 - see the [LICENSE.txt](LICENSE.txt) file for details.
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
 - Email: growyourbusiness@grassr.solutions
