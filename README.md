@@ -14,8 +14,12 @@ Agora is a web application designed to help wholesale businesses manage their op
 ## File Structure
 ```
 ├── LICENSE              # GNU General Public License v3.0
-├── about.html           # Marketing page describing Agora's features and pricing
 ├── index.html           # Main application entry point with fullscreen iframe
+├── redirect.html        # Geolocation-based redirection script
+├── about.html           # Philippines (PH) marketing page
+├── about-aus.html       # Australia (AU) marketing page
+├── about-sg.html        # Singapore (SG) marketing page
+├── about-global.html    # Global marketing page for other countries
 └── README.md            # This file
 ```
 
