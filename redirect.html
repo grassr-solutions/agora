@@ -7,42 +7,78 @@
     <script>
         // Mapping of countries to their respective redirect URLs
         const countryRedirects = {
-            'PH': '/agora/about.html',     // Philippines (original file)
-            'AU': '/agora/about-aus.html', // Australia-specific page
-            'SG': '/agora/about-sg.html',  // Singapore-specific page
-            'default': '/agora/about-global.html' // Default page for other countries
+            'PH': 'about.html',     // Philippines (original file)
+            'AU': 'about-aus.html', // Australia-specific page
+            'SG': 'about-sg.html',  // Singapore-specific page
+            'default': 'about-global.html' // Default page for other countries
         };
 
-        // Function to get user's country using IP geolocation service
+        // Function to get user's country using geolocation API
         async function redirectBasedOnCountry() {
             try {
-                // Use a free IP geolocation API
-                const response = await fetch('https://ip-api.com/json');
+                // Use ipapi.co service
+                const response = await fetch('https://ipapi.co/json/');
                 const data = await response.json();
                 
+                console.log('Geolocation Detection:', data);
+                
                 // Get the country code
-                const countryCode = data.countryCode;
+                const countryCode = data.country_code;
                 
                 // Determine the redirect URL
                 const redirectUrl = countryRedirects[countryCode] || countryRedirects['default'];
                 
+                console.log(`Detected Country: ${countryCode}, Redirecting to: ${redirectUrl}`);
+                
                 // Redirect
                 window.location.href = redirectUrl;
             } catch (error) {
-                console.error('Error detecting country:', error);
+                console.error('Geolocation detection error:', error);
+                
                 // Fallback to default page if detection fails
                 window.location.href = countryRedirects['default'];
             }
         }
 
+        // Backup method using cloudflare
+        async function backupRedirect() {
+            try {
+                const response = await fetch('https://1.1.1.1/cdn-cgi/trace');
+                const trace = await response.text();
+                
+                // Parse the trace to extract country code
+                const countryMatch = trace.match(/loc=([A-Z]{2})/);
+                const countryCode = countryMatch ? countryMatch[1] : null;
+                
+                console.log('Cloudflare Trace Country:', countryCode);
+                
+                if (countryCode) {
+                    const redirectUrl = countryRedirects[countryCode] || countryRedirects['default'];
+                    window.location.href = redirectUrl;
+                } else {
+                    window.location.href = countryRedirects['default'];
+                }
+            } catch (error) {
+                console.error('Backup method failed:', error);
+                window.location.href = countryRedirects['default'];
+            }
+        }
+
         // Run the redirection when the page loads
-        window.addEventListener('DOMContentLoaded', redirectBasedOnCountry);
+        window.addEventListener('DOMContentLoaded', async () => {
+            try {
+                await redirectBasedOnCountry();
+            } catch (error) {
+                console.warn('Primary method failed, trying backup method');
+                await backupRedirect();
+            }
+        });
     </script>
 </head>
 <body>
     <noscript>
         <p>Please enable JavaScript to be redirected to the appropriate page.</p>
-        <a href="/agora/about-global.html">Click here to continue</a>
+        <a href="about-global.html">Click here to continue</a>
     </noscript>
 </body>
 </html>
