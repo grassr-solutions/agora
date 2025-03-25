@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agora - Redirect Page</title>
+    <script>
+        // Mapping of countries to their respective redirect URLs
+        const countryRedirects = {
+            'PH': '/about.html',     // Philippines (original file)
+            'AU': '/about-aus.html', // Australia-specific page
+            'SG': '/about-sg.html',  // Singapore-specific page
+            'default': '/about-global.html' // Default page for other countries
+        };
+
+        // Function to get user's country using IP geolocation service
+        async function redirectBasedOnCountry() {
+            try {
+                // Use a free IP geolocation API
+                const response = await fetch('https://ip-api.com/json');
+                const data = await response.json();
+                
+                // Get the country code
+                const countryCode = data.countryCode;
+                
+                // Determine the redirect URL
+                const redirectUrl = countryRedirects[countryCode] || countryRedirects['default'];
+                
+                // Redirect
+                window.location.href = redirectUrl;
+            } catch (error) {
+                console.error('Error detecting country:', error);
+                // Fallback to default page if detection fails
+                window.location.href = countryRedirects['default'];
+            }
+        }
+
+        // Run the redirection when the page loads
+        window.addEventListener('DOMContentLoaded', redirectBasedOnCountry);
+    </script>
+</head>
+<body>
+    <noscript>
+        <p>Please enable JavaScript to be redirected to the appropriate page.</p>
+        <a href="/about-global.html">Click here to continue</a>
+    </noscript>
+</body>
+</html>
